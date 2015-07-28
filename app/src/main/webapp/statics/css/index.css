@@ -1,0 +1,107 @@
+.wrapper {
+    padding: 0;
+    margin-top: 60px;
+}
+
+.wrapper .logo {
+    width: 61px;
+    height: 67px;
+    display: block;
+    margin: 0 auto;
+}
+
+.search-area {
+    width: 380px;
+    height: 30px;
+    border: 1px solid #6495ED;
+    margin: 30px auto;
+}
+
+.search-input {
+    width: 340px;
+    height: 30px;
+    border-width: 0 1px 0 0;
+    outline: none;
+    line-height: 30px;
+    font-weight: normal;
+    font-size: 16px;
+    padding: 0 2px;
+    color: #666;
+}
+
+#search-btn {
+    border: 0;
+    background-color: white;
+    float: right;
+    width: 38px;
+    height: 30px;
+    cursor: pointer;
+}
+
+#result-area {
+    width: 920px;
+    margin: 0 auto;
+}
+
+.tag-box {
+    width: 260px;
+    margin: 0 20px;
+    float: left;
+    border: 1px solid gray;
+    padding: 2px;
+}
+
+.tag-box h1 {
+    border-bottom: 2px solid gray;
+    font-size: 18px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.tag-box ol {
+    height: 420px;
+    overflow-y: auto;
+}
+
+.tag-box ol li {
+    padding: 0 4px;
+    border-bottom: 1px skyblue dashed;
+    height: 20px;
+    line-height: 20px;
+    cursor: pointer;
+}
+
+.tag-box ol li:hover {
+    background-color: #666666;
+    color: white;
+}
+
+.tag-box ol li i {
+    display: block;
+    float: right;
+    margin-right: 10px;
+}
+
+#tip-area {
+    width: 381px;
+    position: absolute;
+    left: 50%;
+    margin: -30px 0 0 -191px;
+}
+
+#tip-area ul li:hover {
+    background-color: gray;
+    color: white;
+}
+
+#tip-area ul li {
+    padding: 1px 6px;
+    cusor: pointer;
+    border-width: 0 1px 1px 1px;
+    border-style: solid;
+    border-color: gray;
+}
+
+.tag-box h1 {
+    font-size: 20px;
+}

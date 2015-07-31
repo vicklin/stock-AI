@@ -1,5 +1,6 @@
 package cn.iyowei.stockai.web.crawler;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -7,7 +8,7 @@ import java.util.List;
  */
 public abstract class BaseJsonCrawler {
 
-    public abstract void crawl(String path);
+    public abstract void crawl(String path) throws IOException;
 
     public abstract <T> List<T> analysis();
 }

@@ -40,9 +40,6 @@ public class StockTagService {
     public Map<String, Set> serach(StockTagQuery query) {
         Assert.hasText(query.getKey());
         Map<String, Set> map = new HashMap<String, Set>();
-        map.put("stockTag", stockDao.findTagsByStockName(query));
-        map.put("tagStock", stockDao.findStocksByTagName(query));
-        map.put("tagTag", stockDao.findTagsByTagName(query));
         return map;
     }
 
@@ -53,6 +50,6 @@ public class StockTagService {
      * @return
      */
     public List<Stock> findStocksByKey(String key) {
-        return stockDao.findStocksByKey(key);
+        return null;
     }
 }

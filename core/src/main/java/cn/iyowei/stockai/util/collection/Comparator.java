@@ -5,7 +5,7 @@ package cn.iyowei.stockai.util.collection;
  *
  * @param <T>
  * @author - Vick.liu (vicklin123@gmail.com)
- * @brief 供{@link cn.jsfund.stocktag.CollectionUtils.iclass.util.CollectionUtil}使用
+ * @brief 供{@link cn.iyowei.stockai.CollectionUtils.iclass.util.CollectionUtil}使用
  */
 public interface Comparator<T> {
     boolean equals(T o1, T o2);

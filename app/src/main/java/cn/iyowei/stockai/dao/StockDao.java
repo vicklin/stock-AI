@@ -1,7 +1,7 @@
 package cn.iyowei.stockai.dao;
 
 import cn.iyowei.stockai.model.Stock;
-import cn.iyowei.stockai.vo.query.StockTagQuery;
+import cn.iyowei.stockai.vo.query.StockAIQuery;
 import cn.iyowei.stockai.web.config.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -38,7 +38,7 @@ public class StockDao {
      * @param query
      * @return
      */
-    private Set<ZSetOperations.TypedTuple> findByName(RedisTemplate redisTemplate, StockTagQuery query) {
+    private Set<ZSetOperations.TypedTuple> findByName(RedisTemplate redisTemplate, StockAIQuery query) {
         Set<ZSetOperations.TypedTuple> set;
         switch (query.getOrder()) {
             case Constant.ORDER_ASC:

@@ -21,7 +21,7 @@ var spinner = new Spinner({
  */
 var opt = (function ($, handlebar, spin) {
 
-    var url = contextPath + "/stocktag";
+    var url = contextPath + "/stockai";
     var container = "#result-area";
 
     function search(key) {

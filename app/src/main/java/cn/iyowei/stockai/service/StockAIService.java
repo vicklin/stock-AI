@@ -2,7 +2,7 @@ package cn.iyowei.stockai.service;
 
 import cn.iyowei.stockai.dao.StockDao;
 import cn.iyowei.stockai.model.Stock;
-import cn.iyowei.stockai.vo.query.StockTagQuery;
+import cn.iyowei.stockai.vo.query.StockAIQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +21,7 @@ import java.util.Set;
 
 @Service
 @Transactional
-public class StockTagService {
+public class StockAIService {
 
     @Autowired
     private StockDao stockDao;
@@ -37,7 +37,7 @@ public class StockTagService {
      * @param query
      * @return map
      */
-    public Map<String, Set> serach(StockTagQuery query) {
+    public Map<String, Set> serach(StockAIQuery query) {
         Assert.hasText(query.getKey());
         Map<String, Set> map = new HashMap<String, Set>();
         return map;

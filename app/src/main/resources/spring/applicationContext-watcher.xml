@@ -13,7 +13,7 @@
     <bean id="serviceMethodWatcher" class="cn.iyowei.stockai.web.watcher.ServiceMethodWatcher"></bean>
 
     <aop:config>
-        <aop:pointcut id="serviceMethod" expression="execution(* cn.jsfund.stocktag.service.*.*(..))"/>
+        <aop:pointcut id="serviceMethod" expression="execution(* cn.iyowei.stockai.service.*.*(..))"/>
         <aop:aspect ref="serviceMethodWatcher">
             <aop:around method="aroundAdvice" pointcut-ref="serviceMethod"/>
         </aop:aspect>

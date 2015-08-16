@@ -23,7 +23,7 @@
     </mvc:annotation-driven>
 
     <!-- 规定只扫描com.markercup下的@Controller标注的类 -->
-    <context:component-scan base-package="cn.jsfund.stocktag" use-default-filters="false">
+    <context:component-scan base-package="cn.iyowei.stockai" use-default-filters="false">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 

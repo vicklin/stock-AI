@@ -8,7 +8,7 @@
        default-autowire="byName" default-lazy-init="false">
 
     <context:property-placeholder location="classpath:application.properties"/>
-    <context:component-scan base-package="cn.jsfund.stocktag.dao"/>
+    <context:component-scan base-package="cn.iyowei.stockai.dao"/>
 
     <!-- pool config -->
     <bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">
@@ -19,7 +19,7 @@
     <!--connectionFactory-->
 
     <!--redis 4001 个股对应的标签-->
-    <bean id="stockTagConnectionFactory"
+    <bean id="stockAIConnectionFactory"
           class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
         <property name="hostName" value="${redis.stockstag.ip}"/>
         <property name="port" value="${redis.stockstag.port}"/>
@@ -51,8 +51,8 @@
     </bean>
 
     <!--redisTemplate-->
-    <bean id="stockTagTemplate" class="org.springframework.data.redis.core.StringRedisTemplate"
-          p:connectionFactory-ref="stockTagConnectionFactory"/>
+    <bean id="stockAITemplate" class="org.springframework.data.redis.core.StringRedisTemplate"
+          p:connectionFactory-ref="stockAIConnectionFactory"/>
     <bean id="tagStockTemplate" class="org.springframework.data.redis.core.StringRedisTemplate"
           p:connectionFactory-ref="tagStockConnectionFactory"/>
     <bean id="tagTagTemplate" class="org.springframework.data.redis.core.StringRedisTemplate"

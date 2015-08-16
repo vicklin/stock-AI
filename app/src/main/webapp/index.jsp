@@ -39,7 +39,7 @@
     <div class="tag-box stock-tag">
         <h1>"<strong class="key-tag"></strong>" 对应的 <i>标签</i></h1>
         <ol>
-            {{#each stockTag}}
+            {{#each stockAI}}
             <li><b>{{inc @index}}.</b><label>{{value}}</label><i>{{score}}</i></li>
             {{/each}}
         </ol>

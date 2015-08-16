@@ -5,20 +5,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>cn.jsfund.stocktag</groupId>
+        <groupId>cn.iyowei.stockai</groupId>
         <artifactId>web-parent</artifactId>
         <version>0.1</version>
     </parent>
 
     <artifactId>app</artifactId>
     <name>app</name>
-    <url>http://www.jsfund.cn</url>
+    <url>http://www.iyowei.cn</url>
     <packaging>war</packaging>
 
     <dependencies>
         <!-- app modules -->
         <dependency>
-            <groupId>cn.jsfund.stocktag</groupId>
+            <groupId>cn.iyowei.stockai</groupId>
             <artifactId>core</artifactId>
             <type>jar</type>
         </dependency>

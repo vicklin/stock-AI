@@ -116,4 +116,14 @@ public class JsonUtils {
     public static <T> T jsonToBean(String jsonStr, Class<T> clazz) {
         return binder.fromJson(jsonStr, clazz);
     }
+
+    public static String jsStrToJsonStr(String str) {
+        return str.replaceAll(" ", "").replaceAll("\r", "").replaceAll("\n", "")
+                .replaceAll(":", "\":\"").replaceAll(",", "\",\"")
+                .replaceAll("\\{", "\\{\"").replaceAll("}", "\"}")
+                .replaceAll("\\[", "\\[\"").replaceAll("]", "\"]")
+                .replaceAll("\"\"", "\"")
+                .replaceAll("]\"", "]").replaceAll("\"\\[", "\\[")
+                .replaceAll("}\"", "}").replaceAll("\"\\{", "\\{");
+    }
 }

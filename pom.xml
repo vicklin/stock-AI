@@ -500,5 +500,6 @@
     <modules>
         <module>core</module>
         <module>app</module>
+        <module>crawler</module>
     </modules>
 </project>

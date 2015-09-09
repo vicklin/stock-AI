@@ -1,2 +1,11 @@
 .idea/
-web-parent.iml
+*.iml
+
+app/app.iml
+app/target/
+
+core/core.iml
+core/target/
+
+crawler/crawler.iml
+crawler/target/

@@ -1,9 +1,0 @@
-/target
-.classpath
-.checkstyle
-.settings/
-.project
-*.iml
-/src/test
-/*.classpath
-/.classpath

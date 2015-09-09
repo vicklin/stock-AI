@@ -1,5 +1,6 @@
 .idea/
 *.iml
+target/
 
 app/app.iml
 app/target/
@@ -10,3 +11,7 @@ core/target/
 crawler/crawler.iml
 crawler/target/
 
+.DS_Store
+app/.DS_Store
+core/.DS_Store
+crawler/.DS_Store

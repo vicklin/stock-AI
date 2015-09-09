@@ -118,6 +118,15 @@ public class JsonUtils {
     }
 
     public static String jsStrToJsonStr(String str) {
+        str = str.trim();
+        int start = str.indexOf("=") + 1;
+        char endChar = str.charAt(str.length() - 1);
+        int end = str.length();
+        if (';' == endChar) {
+            end = end - 1;
+        }
+        str = str.substring(start, end);
+
         return str.replaceAll(" ", "").replaceAll("\r", "").replaceAll("\n", "")
                 .replaceAll(":", "\":\"").replaceAll(",", "\",\"")
                 .replaceAll("\\{", "\\{\"").replaceAll("}", "\"}")
@@ -125,5 +134,10 @@ public class JsonUtils {
                 .replaceAll("\"\"", "\"")
                 .replaceAll("]\"", "]").replaceAll("\"\\[", "\\[")
                 .replaceAll("}\"", "}").replaceAll("\"\\{", "\\{");
+    }
+
+    public static void main(String[] args) {
+        String str = "var abc={a:1,b:'apple',c:[1,2,3]};";
+        System.out.println(jsStrToJsonStr(str));
     }
 }

@@ -1,7 +1,5 @@
 package cn.iyowei.stockai.page;
 
-import cn.iyowei.stockai.util.collection.CollectionUtils;
-
 import java.io.Serializable;
 import java.util.*;
 
@@ -54,15 +52,6 @@ public class Page<E> implements Serializable, Iterable<E> {
         this.result = elements;
     }
 
-    /**
-     * 当前页包含的数据,key-value形式的数据
-     *
-     * @return 当前页数据源
-     * @throws Exception
-     */
-    public List<Map<String, Object>> getKeyValueResult() {
-        return (List<Map<String, Object>>) CollectionUtils.convert(result);
-    }
 
     /**
      * 是否是首页（第一页），第一页页码为1

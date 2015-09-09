@@ -18,47 +18,16 @@
 
     <!--connectionFactory-->
 
-    <!--redis 4001 个股对应的标签-->
     <bean id="stockAIConnectionFactory"
           class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
-        <property name="hostName" value="${redis.stockstag.ip}"/>
-        <property name="port" value="${redis.stockstag.port}"/>
-        <property name="poolConfig" ref="jedisPoolConfig"/>
-    </bean>
-
-    <!--redis 4002 标签对应的个股-->
-    <bean id="tagStockConnectionFactory"
-          class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
-        <property name="hostName" value="${redis.tagsstock.ip}"/>
-        <property name="port" value="${redis.tagsstock.port}"/>
-        <property name="poolConfig" ref="jedisPoolConfig"/>
-    </bean>
-
-    <!--redis 4003 标签对应的标签-->
-    <bean id="tagTagConnectionFactory"
-          class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
-        <property name="hostName" value="${redis.tagstag.ip}"/>
-        <property name="port" value="${redis.tagstag.port}"/>
-        <property name="poolConfig" ref="jedisPoolConfig"/>
-    </bean>
-
-    <!--redis 4004 根据简称/代码/名称查询Stock-->
-    <bean id="keyStockConnectionFactory"
-          class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
-        <property name="hostName" value="${redis.keystock.ip}"/>
-        <property name="port" value="${redis.keystock.port}"/>
+        <property name="hostName" value="${redis.ip}"/>
+        <property name="port" value="${redis.port}"/>
         <property name="poolConfig" ref="jedisPoolConfig"/>
     </bean>
 
     <!--redisTemplate-->
     <bean id="stockAITemplate" class="org.springframework.data.redis.core.StringRedisTemplate"
           p:connectionFactory-ref="stockAIConnectionFactory"/>
-    <bean id="tagStockTemplate" class="org.springframework.data.redis.core.StringRedisTemplate"
-          p:connectionFactory-ref="tagStockConnectionFactory"/>
-    <bean id="tagTagTemplate" class="org.springframework.data.redis.core.StringRedisTemplate"
-          p:connectionFactory-ref="tagTagConnectionFactory"/>
-    <bean id="keyStockTemplate" class="org.springframework.data.redis.core.StringRedisTemplate"
-          p:connectionFactory-ref="keyStockConnectionFactory"/>
 
 </beans>
 

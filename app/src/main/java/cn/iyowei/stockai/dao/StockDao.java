@@ -1,17 +1,12 @@
 package cn.iyowei.stockai.dao;
 
-import cn.iyowei.stockai.model.Stock;
 import cn.iyowei.stockai.vo.query.StockAIQuery;
 import cn.iyowei.stockai.web.config.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.stereotype.Repository;
-import org.springframework.util.StringUtils;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.Set;
 
 

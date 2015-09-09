@@ -1,6 +1,5 @@
 package cn.iyowei.stockai.util.collection;
 
-import cn.iyowei.stockai.annotation.KeyValue;
 import org.apache.commons.beanutils.PropertyUtilsBean;
 import org.apache.commons.lang.StringUtils;
 
@@ -200,74 +199,6 @@ public class CollectionUtils extends org.apache.commons.collections.CollectionUt
         return duplicateCollection;
     }
 
-    /**
-     * 根据实体转成KeyValue形式Map
-     *
-     * @param t
-     * @return
-     * @throws NoSuchMethodException
-     * @throws InvocationTargetException
-     * @throws IllegalAccessException
-     * @throws Exception
-     */
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    public static <T> Map conver(T t) throws Exception {
-        Map<String, Object> map = null;
-        Class clz = t.getClass();
-
-        if (!clz.isAnnotationPresent(KeyValue.class)) {
-            if (clz.getSuperclass().isAnnotationPresent(KeyValue.class)) {
-                clz = t.getClass().getSuperclass();
-            } else {
-                return null;
-            }
-        }
-
-        KeyValue keyValue = (KeyValue) clz.getAnnotation(KeyValue.class);
-        if (StringUtils.isNotBlank(keyValue.key()) && StringUtils.isNotBlank(keyValue.value())) {
-            map = new LinkedHashMap<String, Object>(2);
-//            switch (keyValue.alias()) {
-//                case AliasType.KEY_VALUE:
-//                    map.put("key", PropertyUtils.getProperty(t, keyValue.key()));
-//                    map.put("value", PropertyUtils.getProperty(t, keyValue.value()));
-//                    break;
-//                case AliasType.ID_NAME:
-//                    map.put("id", PropertyUtils.getProperty(t, keyValue.key()));
-//                    map.put("name", PropertyUtils.getProperty(t, keyValue.value()));
-//                    break;
-//                case AliasType.REUSE:
-//                    map.put(keyValue.key(), PropertyUtils.getProperty(t, keyValue.key()));
-//                    map.put(keyValue.value(), PropertyUtils.getProperty(t, keyValue.value()));
-//                    break;
-//                default:
-//                    break;
-//            }
-        }
-        return map;
-    }
-
-    /**
-     * 根据实体的集合转成KeyValue形式Map的集合
-     *
-     * @param collection
-     * @return
-     * @throws Exception
-     */
-    @SuppressWarnings({"rawtypes", "unchecked"})
-    public static <T> Collection<Map<String, Object>> convert(Collection<T> collection) {
-        Collection c = null;
-        c = getNewInstance(collection);
-        try {
-            for (T t : collection) {
-                if (t != null) {
-                    c.add(conver(t));
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return c;
-    }
 
     /**
      * 根据对象列表和对象的某个属性返回属性的List集合

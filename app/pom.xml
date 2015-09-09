@@ -20,7 +20,10 @@
         <dependency>
             <groupId>cn.iyowei.stockai</groupId>
             <artifactId>core</artifactId>
-            <type>jar</type>
+        </dependency>
+        <dependency>
+            <groupId>cn.iyowei.stockai</groupId>
+            <artifactId>crawler</artifactId>
         </dependency>
         <!-- spring -->
         <dependency>

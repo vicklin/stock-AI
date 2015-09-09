@@ -1,12 +1,12 @@
 package cn.iyowei.stockai.crawler.download;
 
 import cn.iyowei.stockai.crawler.exception.DownloadException;
-import org.apache.http.HttpEntity;
+import cn.iyowei.stockai.crawler.resolver.Resolver;
+import cn.iyowei.stockai.crawler.resolver.ResponseType;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,7 +22,7 @@ public class Downloader {
     private static final Logger log = LoggerFactory.getLogger(Downloader.class);
 
 
-    public String get(String uri) throws DownloadException {
+    public static <T> T get(String uri, Resolver resolver, ResponseType type) throws DownloadException {
         log.debug("Get:" + uri);
         String encodedUri = encodeUri(uri);
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
@@ -31,11 +31,7 @@ public class Downloader {
         HttpResponse response;
         try {
             response = httpClient.execute(httpGet);
-            HttpEntity entity = response.getEntity();
-            log.debug("getStatusLine", response.getStatusLine());
-            String result = EntityUtils.toString(entity);
-            log.debug("responseBody", result);
-            return result;
+            return resolver.resolve(response, type);
 
         } catch (IOException e) {
             throw new DownloadException(e);
@@ -48,7 +44,7 @@ public class Downloader {
         }
     }
 
-    private String encodeUri(String uri) {
+    private static String encodeUri(String uri) {
         int quoIndex = uri.indexOf("?");
         if (quoIndex < 0 || quoIndex == uri.length()) {
             return uri;

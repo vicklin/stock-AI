@@ -1,8 +1,8 @@
 package cn.iyowei.stockai.controller;
 
+import cn.iyowei.stockai.base.BaseRestSpringController;
 import cn.iyowei.stockai.model.Stock;
 import cn.iyowei.stockai.rest.DataMap;
-import cn.iyowei.stockai.base.BaseRestSpringController;
 import cn.iyowei.stockai.service.StockAIService;
 import cn.iyowei.stockai.vo.query.StockAIQuery;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,6 @@
 package cn.iyowei.stockai.util.collection;
 
 import org.apache.commons.beanutils.PropertyUtilsBean;
-import org.apache.commons.lang.StringUtils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.*;

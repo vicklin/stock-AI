@@ -14,16 +14,13 @@ import java.util.List;
 @Component
 public class StockCrawler extends BaseJsonCrawler {
 
+    public static final String URL_TPL = "http://q.jrjimg.cn/?q=cn|s|sa&n=hqa&c={props}&o={rankProp},{rankOrder}&p={pageNo}0{pageSize}&_dc={date}";
     private static final String TPL_PROPS = "{props}";
     private static final String TPL_RANK_PROP = "{rankProp}";
     private static final String TPL_RANK_ORDER = "{rankOrder}";
     private static final String TPL_PAGE_SIZE = "{pageSize}";
     private static final String TPL_PAGE_NO = "{pageNo}";
     private static final String TPL_DATE = "{date}";
-
-    public static final String URL_TPL = "http://q.jrjimg.cn/?q=cn|s|sa&n=hqa&c={props}&o={rankProp},{rankOrder}&p={pageNo}0{pageSize}&_dc={date}";
-
-
     private String hourGapUrl = "http://hqquery.jrj.com.cn/todaystat.do?sort=p4_pl&page=1&size=20&order=desc&_dc=1441800938865";
     private String fiveGapUrl = "http://q.jrjimg.cn/?q=cn|s|sa&c=s,ta,tm,sl,cot,cat,ape,min5pl&n=hqa&o=min5pl,{rank}&p=1020&_dc=1438083218923";
     private String cRateUrl = "http://q.jrjimg.cn/?q=cn|s|sa&c=s,ta,tm,sl,cot,cat,ape&n=hqa&o=tr,{rank}&p=1020&_dc=1441792200036";
@@ -31,6 +28,10 @@ public class StockCrawler extends BaseJsonCrawler {
     private String dealUrl = "http://q.jrjimg.cn/?q=cn|s|sa&c=s,ta,tm,sl,cot,cat,ape&n=hqa&o=ta,{rank}&p=1020&_dc=1441801121057";
     private String shakeUrl = "http://q.jrjimg.cn/?q=cn|s|sa&c=s,ta,tm,sl,cot,cat,ape&n=hqa&o=sl,{rank}&p=1020&_dc=1441801444562";
 
+    public static void main(String[] args) throws IOException {
+        StockCrawler crawler = new StockCrawler();
+        crawler.queryFivePL(QueryType.RankOrder.RISE, 1, 30);
+    }
 
     /**
      * 成交量排行
@@ -100,11 +101,6 @@ public class StockCrawler extends BaseJsonCrawler {
      */
     public List<StockQuotationDto> queryTradeRate(QueryType.RankOrder rankOrder, int pageNo, int pageSize) throws IOException {
         return super.crawl(template(QueryType.props, QueryType.RankProp.TRADE_RAGE, rankOrder, pageNo, pageSize));
-    }
-
-    public static void main(String[] args) throws IOException {
-        StockCrawler crawler = new StockCrawler();
-        crawler.queryFivePL(QueryType.RankOrder.RISE, 1, 30);
     }
 
     private String template(String props, QueryType.RankProp rankProp, QueryType.RankOrder rankOrder, int pageNo, int pageSize) {

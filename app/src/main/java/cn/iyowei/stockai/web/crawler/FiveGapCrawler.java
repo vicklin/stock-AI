@@ -12,13 +12,13 @@ public class FiveGapCrawler extends BaseJsonCrawler {
 
     private String uri = "http://q.jrjimg.cn/?q=cn|s|sa&c=s,ta,tm,sl,cot,cat,ape,min5pl&n=hqa&o=min5pl,d&p=1020&_dc=1438083218923";
 
-    public List<StockQuotationDto> query() throws IOException {
-        return super.crawl(this.uri);
-    }
-
     public static void main(String[] args) throws IOException {
         FiveGapCrawler crawler = new FiveGapCrawler();
         crawler.crawl(crawler.uri);
+    }
+
+    public List<StockQuotationDto> query() throws IOException {
+        return super.crawl(this.uri);
     }
 
 }

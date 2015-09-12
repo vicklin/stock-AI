@@ -1,97 +1,131 @@
 @charset "utf-8";
-	/** * "Noah Layout" - My (X)HTML/CSS Framework * * 重设样式 * * 用于重设浏览器默认样?* * @link    http://code.google.com/p/noah-layout/ */
-@media all { /** * @section 首先是最强势的一?*/ /* 清除某些元素?padding ?margin 属?*/
-	body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td
-		{
-		margin: 0;
-		padding: 0;
-	}
-	/*------------------------------------------------------------------------------------------------------*/
-	/** * @section 然后重设浏览器默认文字样?*/ /* 重设默认字色和字?*/
-	body {
-		font-size: 12px;
-		line-height: 18px;
-		background: #fff;
-		color: #333;
-		font-family: "宋体";
-		text-align: left;
-	} /* 重设一些文本标签的默认样式 */
-	address,caption,cite,code,dfn,em,strong,th,var,optgroup {
-		font-style: normal;
-		font-weight: normal;
-	}
-	h1,h2,h3,h4,h5,h6 {
-		font-size: 100%;
-		font-weight: normal;
-	}
-	abbr,acronym {
-		border: 0;
-		font-variant: normal;
-	}
-	input,button,textarea,select,optgroup,option {
-		font-family: inherit;
-		font-size: inherit;
-		font-style: inherit;
-		font-weight: inherit;
-	}
-	code,kbd,samp,tt {
-		font-size: 100%;
-	}
-	sup,sub {
-		font-size: 100%;
-		vertical-align: baseline;
-	} /* 取消超链接的下划?*/
-	a {
-		color: #333;
-		text-decoration: none;
-	}
-	a:hover {
-		text-decoration: none;
-	} /* 取消点击后的边框虚线 */
-	a:active,a:focus {
-		outline: 0;
-	}
-	/*------------------------------------------------------------------------------------------------------*/
-	/** * @section 最后，重设其他的默认样?*/
-	/* 强迫 Netscape, Firefox  Safari 浏览器显示出垂直滚动?*/
-	html {
-		height: 100%;
-		margin-bottom: 1px;
-	} /* 清除 <fieldset> ?<img> 元素的边?*/
-	fieldset,img {
-		border: 0 solid;
-	} /* 重设表单样式 */
-	option {
-		padding-left: 0.5em;
-	}
-	select {
-		padding: .2em;
-	} /* 重设引用样式 */
-	blockquote,cite {
-		margin: 0 0 1em 1.6em;
-		width: auto;
-	}
-	blockquote:before,blockquote:after,q:before,q:after {
-		content: "";
-	}
-	blockquote,q {
-		quotes: "" "";
-	} /* 列表清单 */
-	ul,ol,dl {
-		list-style: none;
-	}
-	dt {
-		font-weight: 700;
-	}
-	dd {
-		margin: 0 0 .5em 1em;
-	} /* Table 标签 | 在标签中加入 cellspacing="0" 属性才会完?*/
-	table {
-		border-collapse: separate;
-		border-spacing: 0;
-	}
-	caption,th,td {
-		text-align: left;
-		font-weight: 400;
-	} /* CSS end */
+/** * "Noah Layout" - My (X)HTML/CSS Framework * * 重设样式 * * 用于重设浏览器默认样?* * @link    http://code.google.com/p/noah-layout/ */
+@media all {
+    /** * @section 首先是最强势的一?*/
+    /* 清除某些元素?padding ?margin 属?*/
+    body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, code, form, fieldset, legend, input, button, textarea, p, blockquote, th, td {
+        margin: 0;
+        padding: 0;
+    }
+
+    /*------------------------------------------------------------------------------------------------------*/
+    /** * @section 然后重设浏览器默认文字样?*/
+    /* 重设默认字色和字?*/
+    body {
+        font-size: 12px;
+        line-height: 18px;
+        background: #fff;
+        color: #333;
+        font-family: "宋体";
+        text-align: left;
+    }
+
+    /* 重设一些文本标签的默认样式 */
+    address, caption, cite, code, dfn, em, strong, th, var, optgroup {
+        font-style: normal;
+        font-weight: normal;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        font-size: 100%;
+        font-weight: normal;
+    }
+
+    abbr, acronym {
+        border: 0;
+        font-variant: normal;
+    }
+
+    input, button, textarea, select, optgroup, option {
+        font-family: inherit;
+        font-size: inherit;
+        font-style: inherit;
+        font-weight: inherit;
+    }
+
+    code, kbd, samp, tt {
+        font-size: 100%;
+    }
+
+    sup, sub {
+        font-size: 100%;
+        vertical-align: baseline;
+    }
+
+    /* 取消超链接的下划?*/
+    a {
+        color: #333;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: none;
+    }
+
+    /* 取消点击后的边框虚线 */
+    a:active, a:focus {
+        outline: 0;
+    }
+
+    /*------------------------------------------------------------------------------------------------------*/
+    /** * @section 最后，重设其他的默认样?*/
+    /* 强迫 Netscape, Firefox  Safari 浏览器显示出垂直滚动?*/
+    html {
+        height: 100%;
+        margin-bottom: 1px;
+    }
+
+    /* 清除 <fieldset> ?<img> 元素的边?*/
+    fieldset, img {
+        border: 0 solid;
+    }
+
+    /* 重设表单样式 */
+    option {
+        padding-left: 0.5em;
+    }
+
+    select {
+        padding: .2em;
+    }
+
+    /* 重设引用样式 */
+    blockquote, cite {
+        margin: 0 0 1em 1.6em;
+        width: auto;
+    }
+
+    blockquote:before, blockquote:after, q:before, q:after {
+        content: "";
+    }
+
+    blockquote, q {
+        quotes: "" "";
+    }
+
+    /* 列表清单 */
+    ul, ol, dl {
+        list-style: none;
+    }
+
+    dt {
+        font-weight: 700;
+    }
+
+    dd {
+        margin: 0 0 .5em 1em;
+    }
+
+    /* Table 标签 | 在标签中加入 cellspacing="0" 属性才会完?*/
+    table {
+        border-collapse: separate;
+        border-spacing: 0;
+    }
+
+    caption, th, td {
+        text-align: left;
+        font-weight: 400;
+    }
+
+    /* CSS end */
 }

@@ -1,8 +1,8 @@
 package cn.iyowei.stockai.jdbc.sqlgenerator;
 
+import cn.iyowei.stockai.base.BaseEntity;
 import cn.iyowei.stockai.jdbc.sqlgenerator.metadata.Column;
 import cn.iyowei.stockai.jdbc.sqlgenerator.metadata.Table;
-import cn.iyowei.stockai.base.BaseEntity;
 import org.apache.commons.lang.StringUtils;
 
 import java.util.ArrayList;

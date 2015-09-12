@@ -25,7 +25,7 @@ public class StockDao {
     @Autowired
     private RedisTemplate redisTemplate;
 
-    
+
     /*
      * 指定RedisTemplate查询某set
      *

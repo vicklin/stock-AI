@@ -33,17 +33,15 @@ public class StockDao {
      * @param query
      * @return
      */
-    private Set<ZSetOperations.TypedTuple> findByName(RedisTemplate redisTemplate, StockAIQuery query) {
+    public Set<ZSetOperations.TypedTuple> findByName(StockAIQuery query) {
         Set<ZSetOperations.TypedTuple> set;
         switch (query.getOrder()) {
             case Constant.ORDER_ASC:
                 set = redisTemplate.boundZSetOps(query.getKey()).rangeWithScores(query.getStart(), query.getEnd());
                 break;
             case Constant.ORDER_DESC:
-                set = redisTemplate.boundZSetOps(query.getKey()).reverseRangeWithScores(query.getStart(), query.getEnd());
-                break;
             default:
-                set = redisTemplate.boundZSetOps(query.getKey()).rangeWithScores(query.getStart(), query.getEnd());
+                set = redisTemplate.boundZSetOps(query.getKey()).reverseRangeWithScores(query.getStart(), query.getEnd());
         }
         return set;
     }

@@ -44,9 +44,9 @@ public abstract class BaseJsonCrawler {
         for (Object obj : list) {
             String[] arr = obj.toString().replaceAll("\"", "").replaceAll("\\[", "").replaceAll("]", "").split(",");
             StockQuotationDto dto = new StockQuotationDto();
-            dto.setId(arr[0]);
-            dto.setCode(arr[1]);
-            dto.setName(arr[2]);
+            dto.setId(arr[0].trim());
+            dto.setCode(arr[1].trim());
+            dto.setName(arr[2].trim());
             dto.setLcp(Double.valueOf(arr[3])); //  lcp
             dto.setStp(Double.valueOf(arr[4])); //  stp
             dto.setNp(Double.valueOf(arr[5])); //  np

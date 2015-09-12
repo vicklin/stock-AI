@@ -2,6 +2,7 @@ package cn.iyowei.stockai.web.crawler;
 
 import cn.iyowei.stockai.vo.dto.StockQuotationDto;
 import cn.iyowei.stockai.web.crawler.vo.QueryType;
+import org.springframework.stereotype.Component;
 
 import java.io.IOException;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.List;
  * {@see http://summary.jrj.com.cn/gpph/sa_tr_d.shtml}
  * Created by vick on 15-7-28.
  */
+@Component
 public class StockCrawler extends BaseJsonCrawler {
 
     private static final String TPL_PROPS = "{props}";
@@ -96,7 +98,7 @@ public class StockCrawler extends BaseJsonCrawler {
      * @return
      * @throws IOException
      */
-    public List<StockQuotationDto> queryChangeRate(QueryType.RankOrder rankOrder, int pageNo, int pageSize) throws IOException {
+    public List<StockQuotationDto> queryTradeRate(QueryType.RankOrder rankOrder, int pageNo, int pageSize) throws IOException {
         return super.crawl(template(QueryType.props, QueryType.RankProp.TRADE_RAGE, rankOrder, pageNo, pageSize));
     }
 

@@ -66,6 +66,7 @@ public class StockAIController extends BaseRestSpringController {
             dataMap.addAttribute(STATUS_CODE, HttpStatus.OK.value());
             dataMap.addAttribute(MESSAGE, HttpStatus.OK.getReasonPhrase());
         } catch (Exception e) {
+            logger.error("StockAIController exception:", e);
             dataMap.addAttribute(STATUS_CODE, HttpStatus.INTERNAL_SERVER_ERROR.value());
         }
         return dataMap;

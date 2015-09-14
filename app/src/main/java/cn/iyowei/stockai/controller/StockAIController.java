@@ -61,7 +61,7 @@ public class StockAIController extends BaseRestSpringController {
     public DataMap list(StockAIQuery query) {
         DataMap dataMap = new DataMap();
         try {
-            Map<String, Set> searchResult = stockAIService.serach(query);
+            Map<String, Set> searchResult = stockAIService.search(query);
             dataMap.addAttribute(DATA, searchResult);
             dataMap.addAttribute(STATUS_CODE, HttpStatus.OK.value());
             dataMap.addAttribute(MESSAGE, HttpStatus.OK.getReasonPhrase());

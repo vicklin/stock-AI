@@ -40,7 +40,7 @@ public class StockAIService {
      * @param query
      * @return map
      */
-    public Map<String, Set> serach(StockAIQuery query) {
+    public Map<String, Set> search(StockAIQuery query) {
         Assert.hasText(query.getKey());
         Map<String, Set> map = new HashMap<String, Set>();
         map.put("list", stockDao.findByName(query));

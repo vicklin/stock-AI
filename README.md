@@ -1,4 +1,6 @@
 # stock-AI
 
---- INSTALL
-git clone https://github.com/vicklin/stock-AI.git
+## INSTALL
+```bash
+$ git clone https://github.com/vicklin/stock-AI.git
+```

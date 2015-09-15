@@ -514,5 +514,6 @@
         <module>app</module>
         <module>crawler</module>
         <module>stock-data</module>
+        <module>tracer</module>
     </modules>
 </project>

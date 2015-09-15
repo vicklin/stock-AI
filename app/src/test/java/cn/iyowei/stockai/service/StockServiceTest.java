@@ -1,9 +1,9 @@
 package cn.iyowei.stockai.service;
 
 import cn.iyowei.stockai.BaseSpringTest;
+import cn.iyowei.stockai.data.core.StockTuple;
 import cn.iyowei.stockai.util.json.JsonUtils;
 import cn.iyowei.stockai.vo.dto.StockQuotationDto;
-import cn.iyowei.stockai.vo.dto.StockTuple;
 import cn.iyowei.stockai.web.crawler.StockCrawler;
 import cn.iyowei.stockai.web.crawler.vo.QueryType;
 import org.junit.Test;

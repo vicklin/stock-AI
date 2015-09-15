@@ -1,10 +1,10 @@
 package cn.iyowei.stockai.service;
 
-import cn.iyowei.stockai.dao.StockAIDao;
 import cn.iyowei.stockai.dao.StockDao;
+import cn.iyowei.stockai.data.core.StockTuple;
+import cn.iyowei.stockai.data.manager.DataSetProxy;
 import cn.iyowei.stockai.model.Stock;
 import cn.iyowei.stockai.vo.dto.StockQuotationDto;
-import cn.iyowei.stockai.vo.dto.StockTuple;
 import cn.iyowei.stockai.vo.query.StockAIQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,7 +27,7 @@ public class StockAIService {
     private StockDao stockDao;
 
     @Autowired
-    private StockAIDao stockAIDao;
+    private DataSetProxy dataSetProxy;
 
     /**
      * 搜索
@@ -59,12 +59,12 @@ public class StockAIService {
 
 
     public List<StockTuple> union(String set1, Collection<String> targets) {
-        return stockAIDao.union(set1, targets);
+        return dataSetProxy.listUnion(set1, targets);
     }
 
 
     public List<StockTuple> intersect(String set1, Collection<String> targets) {
-        return stockAIDao.intersect(set1, targets);
+        return dataSetProxy.listIntersect(set1, targets);
     }
 
     public void save(String setName, Collection<StockQuotationDto> c) {
@@ -73,14 +73,14 @@ public class StockAIService {
         for (StockQuotationDto dto : c) {
             stockTuples.add(new StockTuple(dto.getCode(), score++));
         }
-        stockAIDao.save(setName, stockTuples);
+        dataSetProxy.save(setName, stockTuples);
     }
 
     public List<StockTuple> list(String setName) {
-        return stockAIDao.list(setName);
+        return dataSetProxy.list(setName);
     }
 
     public void remove(String setName) {
-        stockAIDao.remove(setName);
+        dataSetProxy.remove(setName);
     }
 }

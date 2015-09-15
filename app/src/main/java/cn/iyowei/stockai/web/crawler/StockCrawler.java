@@ -21,12 +21,6 @@ public class StockCrawler extends BaseJsonCrawler {
     private static final String TPL_PAGE_SIZE = "{pageSize}";
     private static final String TPL_PAGE_NO = "{pageNo}";
     private static final String TPL_DATE = "{date}";
-    private String hourGapUrl = "http://hqquery.jrj.com.cn/todaystat.do?sort=p4_pl&page=1&size=20&order=desc&_dc=1441800938865";
-    private String fiveGapUrl = "http://q.jrjimg.cn/?q=cn|s|sa&c=s,ta,tm,sl,cot,cat,ape,min5pl&n=hqa&o=min5pl,{rank}&p=1020&_dc=1438083218923";
-    private String cRateUrl = "http://q.jrjimg.cn/?q=cn|s|sa&c=s,ta,tm,sl,cot,cat,ape&n=hqa&o=tr,{rank}&p=1020&_dc=1441792200036";
-    private String rateUrl = "http://q.jrjimg.cn/?q=cn|s|sa&c=s,ta,tm,sl,cot,cat,ape&n=hqa&o=pl,{rank}&p=1020&_dc=1441800769214";
-    private String dealUrl = "http://q.jrjimg.cn/?q=cn|s|sa&c=s,ta,tm,sl,cot,cat,ape&n=hqa&o=ta,{rank}&p=1020&_dc=1441801121057";
-    private String shakeUrl = "http://q.jrjimg.cn/?q=cn|s|sa&c=s,ta,tm,sl,cot,cat,ape&n=hqa&o=sl,{rank}&p=1020&_dc=1441801444562";
 
     public static void main(String[] args) throws IOException {
         StockCrawler crawler = new StockCrawler();
@@ -110,7 +104,6 @@ public class StockCrawler extends BaseJsonCrawler {
                 .replace(TPL_PAGE_NO, String.valueOf(pageNo))
                 .replace(TPL_PAGE_SIZE, String.valueOf(pageSize))
                 .replace(TPL_DATE, String.valueOf(System.currentTimeMillis()));
-        System.out.println(uri);
         return uri;
     }
 

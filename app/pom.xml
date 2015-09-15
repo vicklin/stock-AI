@@ -6,7 +6,7 @@
 
     <parent>
         <groupId>cn.iyowei.stockai</groupId>
-        <artifactId>web-parent</artifactId>
+        <artifactId>stockai-parent</artifactId>
         <version>0.1</version>
     </parent>
 
@@ -24,6 +24,10 @@
         <dependency>
             <groupId>cn.iyowei.stockai</groupId>
             <artifactId>crawler</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>cn.iyowei.stockai</groupId>
+            <artifactId>stock-data</artifactId>
         </dependency>
         <!-- spring -->
         <dependency>
@@ -143,12 +147,6 @@
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-redis</artifactId>
-        </dependency>
-
-        <!-- ehcache -->
-        <dependency>
-            <groupId>net.sf.ehcache</groupId>
-            <artifactId>ehcache-core</artifactId>
         </dependency>
 
     </dependencies>

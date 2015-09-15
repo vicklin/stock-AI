@@ -1,4 +1,4 @@
-package cn.iyowei.stockai.vo.dto;
+package cn.iyowei.stockai.data.core;
 
 import org.springframework.data.redis.core.DefaultTypedTuple;
 

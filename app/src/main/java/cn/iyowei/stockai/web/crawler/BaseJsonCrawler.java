@@ -24,6 +24,7 @@ public abstract class BaseJsonCrawler {
     private static final Logger log = LoggerFactory.getLogger(BaseJsonCrawler.class);
 
     public List<StockQuotationDto> crawl(String path) throws IOException {
+        log.info("start crawl url:" + path);
         String result;
         try {
             result = Downloader.get(path, new MultiTypeResolver(), ResponseType.JSONP);
@@ -35,7 +36,7 @@ public abstract class BaseJsonCrawler {
     }
 
     public List<StockQuotationDto> analysis(String json, Class clazz) {
-        log.info("analysis:" + json);
+        log.debug("analysis:" + json);
         json = json.replace("Summary", "summary").replace("HqData", "hqData").replace("Column", "column");
 
         Hqa hqa = JsonUtils.toBean(json, Hqa.class);

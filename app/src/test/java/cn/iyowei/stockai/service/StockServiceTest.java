@@ -27,10 +27,18 @@ public class StockServiceTest extends BaseSpringTest {
 
 
     @Test
+    public void test() throws IOException {
+        testSavePL();
+        testSaveFivePL();
+        testSaveShake();
+        testIntersect();
+    }
+
+    @Test
     public void testSavePL() throws IOException {
         String setName = QueryType.RankProp.PL.value();
         List<StockQuotationDto> list = crawler.queryPL(QueryType.RankOrder.RISE, 0, 50);
-        System.out.println(JsonUtils.listToJson(list));
+        System.out.println(JsonUtils.toString(list));
         aiService.save(setName, list);
     }
 
@@ -38,7 +46,7 @@ public class StockServiceTest extends BaseSpringTest {
     public void testSaveFivePL() throws IOException {
         String setName = QueryType.RankProp.FIVE_PL.value();
         List<StockQuotationDto> list = crawler.queryFivePL(QueryType.RankOrder.RISE, 0, 50);
-        System.out.println(JsonUtils.listToJson(list));
+        System.out.println(JsonUtils.toString(list));
         aiService.save(setName, list);
     }
 
@@ -46,7 +54,7 @@ public class StockServiceTest extends BaseSpringTest {
     public void testSaveShake() throws IOException {
         String setName = QueryType.RankProp.SHAKE.value();
         List<StockQuotationDto> list = crawler.queryShake(QueryType.RankOrder.RISE, 0, 50);
-        System.out.println(JsonUtils.listToJson(list));
+        System.out.println(JsonUtils.toString(list));
         aiService.save(setName, list);
     }
 
@@ -55,7 +63,7 @@ public class StockServiceTest extends BaseSpringTest {
     public void testList() {
         String setName = QueryType.RankProp.FIVE_PL.value();
         List<StockTuple> list2 = aiService.list(setName);
-        System.out.println(JsonUtils.listToJson(list2));
+        System.out.println(JsonUtils.toString(list2));
     }
 
 
@@ -71,7 +79,7 @@ public class StockServiceTest extends BaseSpringTest {
 //        targets.add(setName2);
         targets.add(setName3);
         List<StockTuple> list = aiService.intersect(setName, targets);
-        System.out.println(JsonUtils.listToJson(list));
+        System.out.println(JsonUtils.toString(list));
     }
 
 
@@ -87,7 +95,7 @@ public class StockServiceTest extends BaseSpringTest {
         targets.add(setName2);
         targets.add(setName3);
         List<StockTuple> list = aiService.union(setName, targets);
-        System.out.println(JsonUtils.listToJson(list));
+        System.out.println(JsonUtils.toString(list));
     }
 
     @Test
@@ -99,6 +107,5 @@ public class StockServiceTest extends BaseSpringTest {
         aiService.remove(setName2);
         aiService.remove(setName3);
     }
-
 
 }

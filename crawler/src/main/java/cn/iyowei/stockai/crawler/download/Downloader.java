@@ -22,6 +22,28 @@ public class Downloader {
     private static final Logger log = LoggerFactory.getLogger(Downloader.class);
 
 
+    public HttpResponse get(String uri) throws DownloadException {
+        log.debug("Get:" + uri);
+        String encodedUri = encodeUri(uri);
+        CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+        HttpGet httpGet = new HttpGet(encodedUri);
+        log.debug("getRequestLine", httpGet.getRequestLine());
+        HttpResponse response;
+        try {
+            response = httpClient.execute(httpGet);
+            return response;
+
+        } catch (IOException e) {
+            throw new DownloadException(e);
+        } finally {
+            try {
+                httpClient.close();
+            } catch (IOException e) {
+                throw new DownloadException(e);
+            }
+        }
+    }
+
     public static <T> T get(String uri, Resolver resolver, ResponseType type) throws DownloadException {
         log.debug("Get:" + uri);
         String encodedUri = encodeUri(uri);

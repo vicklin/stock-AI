@@ -38,7 +38,7 @@ public abstract class BaseJsonCrawler {
         log.info("analysis:" + json);
         json = json.replace("Summary", "summary").replace("HqData", "hqData").replace("Column", "column");
 
-        Hqa hqa = JsonUtils.jsonToBean(json, Hqa.class);
+        Hqa hqa = JsonUtils.toBean(json, Hqa.class);
         LinkedList<Object> list = hqa.getHqData();
         List<StockQuotationDto> stockQuotationDtoList = new ArrayList<StockQuotationDto>();
         for (Object obj : list) {

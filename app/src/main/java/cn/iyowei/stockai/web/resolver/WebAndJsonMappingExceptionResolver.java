@@ -41,7 +41,7 @@ public class WebAndJsonMappingExceptionResolver extends SimpleMappingExceptionRe
                 Map<String, Object> resultMap = new HashMap<String, Object>(2);
                 resultMap.put("statusCode", statusCode);
                 resultMap.put("message", getErrorMessage(ex));
-                String json = JsonUtils.mapToJson(resultMap);
+                String json = JsonUtils.toString(resultMap);
                 response.setStatus(statusCode);
                 System.out.println("before response.getStatus() : " + response.getStatus());
                 HttpServletUtils.render(response, "application/json", json);

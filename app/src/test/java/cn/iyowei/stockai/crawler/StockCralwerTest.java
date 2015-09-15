@@ -23,6 +23,6 @@ public class StockCralwerTest extends BaseSpringTest {
     @Test
     public void testCrawl() throws IOException {
         List<StockQuotationDto> list = crawler.queryFivePL(QueryType.RankOrder.RISE, 0, 100);
-        System.out.println(JsonUtils.listToJson(list));
+        System.out.println(JsonUtils.toString(list));
     }
 }

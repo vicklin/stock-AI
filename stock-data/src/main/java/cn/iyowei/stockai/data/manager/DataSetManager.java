@@ -49,6 +49,7 @@ public class DataSetManager extends Observable {
         DataThreshold dt = new DataThreshold(i, 100);
         dt.setAmount(list.size());
         if (dt.isUnderThreshold()) {
+            setChanged();
             notifyObservers(dt);
         }
     }

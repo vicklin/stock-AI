@@ -3,6 +3,7 @@ package cn.iyowei.stockai.data.core;
 import org.springframework.data.redis.core.DefaultTypedTuple;
 
 /**
+ * 股票代码-得分
  * Created by liuguanglin on 15/9/12.
  */
 public class StockTuple extends DefaultTypedTuple<String> {

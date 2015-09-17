@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>cn.iyowei.stockai</groupId>
+        <artifactId>stockai-parent</artifactId>
+        <version>0.1</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>stock-collector</artifactId>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>cn.iyowei.stockai</groupId>
+            <artifactId>core</artifactId>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.iyowei.stockai</groupId>
+            <artifactId>crawler</artifactId>
+            <type>jar</type>
+        </dependency>
+
+        <dependency>
+            <groupId>cn.iyowei.stockai</groupId>
+            <artifactId>stock-data</artifactId>
+            <type>jar</type>
+        </dependency>
+    </dependencies>
+
+</project>

@@ -515,5 +515,6 @@
         <module>crawler</module>
         <module>stock-data</module>
         <module>tracer</module>
+        <module>stock-collector</module>
     </modules>
 </project>

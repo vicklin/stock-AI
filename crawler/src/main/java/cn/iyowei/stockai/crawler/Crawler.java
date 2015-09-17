@@ -1,8 +1,7 @@
 package cn.iyowei.stockai.crawler;
 
-import cn.iyowei.stockai.crawler.analyse.management.ResponseManagement;
+import cn.iyowei.stockai.crawler.analyse.management.ResponseManager;
 import cn.iyowei.stockai.crawler.download.Downloader;
-import org.apache.http.HttpResponse;
 
 /**
  * Created by vick on 15-9-14.
@@ -11,42 +10,32 @@ public class Crawler {
 
     private String url;
 
-    private ResponseManagement responseManagement;
+    private ResponseManager manager;
+
+    public Crawler() {
+    }
+
+    public Crawler(String url) {
+        this.url = url;
+    }
 
     public void crawl() {
-        handle();
-    }
-
-    public void crawl(String url) {
-        this.url = url;
-        handle();
-    }
-
-    private void handle() {
         try {
-            HttpResponse response = new Downloader().get(url);
-            responseManagement.manage(response);
+            String html = new Downloader().get(url);
+            manager.manage(html);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
-    public Crawler setURL(String url) {
-        setUrl(url);
+    public Crawler setManager(ResponseManager manager) {
+        this.manager = manager;
         return this;
     }
 
-    public Crawler setRM(ResponseManagement responseManagement) {
-        setResponseManagement(responseManagement);
-        return this;
-    }
-
-    public void setResponseManagement(ResponseManagement responseManagement) {
-        this.responseManagement = responseManagement;
-    }
-
-    public void setUrl(String url) {
+    public Crawler setUrl(String url) {
         this.url = url;
+        return this;
     }
 
 }

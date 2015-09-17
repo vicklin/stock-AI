@@ -1,11 +1,11 @@
 package cn.iyowei.stockai.collector.resolver;
 
-import cn.iyowei.stockai.crawler.analyse.resolve.Pipeline;
+import cn.iyowei.stockai.crawler.analyse.resolve.Resolver;
 
 /**
  * Created by vick on 15-9-17.
  */
-public class JsonpResolver implements Pipeline {
+public class JsonpResolver implements Resolver {
 
     @Override
     public Object handle(String html, Object lastResult) {

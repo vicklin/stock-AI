@@ -1,6 +1,6 @@
 package cn.iyowei.stockai.crawler;
 
-import cn.iyowei.stockai.crawler.analyse.management.ResponseManager;
+import cn.iyowei.stockai.crawler.analyse.management.ResultManager;
 import cn.iyowei.stockai.crawler.download.Downloader;
 
 /**
@@ -10,7 +10,7 @@ public class Crawler {
 
     private String url;
 
-    private ResponseManager manager;
+    private ResultManager manager;
 
     public Crawler() {
     }
@@ -28,7 +28,7 @@ public class Crawler {
         }
     }
 
-    public Crawler setManager(ResponseManager manager) {
+    public Crawler setManager(ResultManager manager) {
         this.manager = manager;
         return this;
     }

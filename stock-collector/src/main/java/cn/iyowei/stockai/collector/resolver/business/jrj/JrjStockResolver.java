@@ -2,7 +2,7 @@ package cn.iyowei.stockai.collector.resolver.business.jrj;
 
 import cn.iyowei.stockai.collector.resolver.business.jrj.vo.Column;
 import cn.iyowei.stockai.collector.resolver.business.jrj.vo.Hqa;
-import cn.iyowei.stockai.crawler.analyse.resolve.Pipeline;
+import cn.iyowei.stockai.crawler.analyse.resolve.Resolver;
 import cn.iyowei.stockai.util.json.JsonUtils;
 
 import java.util.ArrayList;
@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * Created by vick on 15-9-17.
  */
-public class JrjStockResolver implements Pipeline {
+public class JrjStockResolver implements Resolver {
 
     @Override
     public Object handle(String html, Object jsonResult) {

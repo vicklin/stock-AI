@@ -15,12 +15,8 @@ public class DataSetProxy {
     private DataSetManager manager;
 
     // ------------ read ----------------//
-    public List<StockTuple> listUnion(String set1, Collection<String> targetSets) {
-        return manager.listUnion(set1, targetSets);
-    }
-
-    public List<StockTuple> listIntersect(String set1, Collection<String> targetSets) {
-        return manager.listIntersect(set1, targetSets);
+    public List<StockTuple> intersect(String set1, Collection<String> targetSets) {
+        return manager.intersect(set1, targetSets);
     }
 
     public int count(String setName) {

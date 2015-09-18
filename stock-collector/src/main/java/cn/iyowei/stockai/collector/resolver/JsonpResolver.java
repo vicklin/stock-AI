@@ -3,6 +3,7 @@ package cn.iyowei.stockai.collector.resolver;
 import cn.iyowei.stockai.crawler.analyse.resolve.Resolver;
 
 /**
+ * 把jsonp的返回转换成json格式string
  * Created by vick on 15-9-17.
  */
 public class JsonpResolver implements Resolver {

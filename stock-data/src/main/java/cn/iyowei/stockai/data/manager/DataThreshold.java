@@ -1,16 +1,22 @@
 package cn.iyowei.stockai.data.manager;
 
+import java.util.Collection;
+
 /**
  * 数据阀值
  * Created by liuguanglin on 15/9/15.
  */
 public class DataThreshold {
-    private int type; // 类型
     private long threshold; // 阀值
     private long amount; // 当前数量
 
-    public DataThreshold(int type, long threshold) {
-        this.type = type;
+    private String mainSet;
+
+    private Collection<String> targetSets;
+
+    public DataThreshold(String mainSet, Collection<String> targetSets, long threshold) {
+        this.mainSet = mainSet;
+        this.targetSets = targetSets;
         this.threshold = threshold;
     }
 
@@ -20,14 +26,6 @@ public class DataThreshold {
 
     public boolean isUnderThreshold() {
         return this.amount < this.threshold;
-    }
-
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
     }
 
     public long getThreshold() {
@@ -45,5 +43,21 @@ public class DataThreshold {
     public DataThreshold setAmount(long amount) {
         this.amount = amount;
         return this;
+    }
+
+    public Collection<String> getTargetSets() {
+        return targetSets;
+    }
+
+    public void setTargetSets(Collection<String> targetSets) {
+        this.targetSets = targetSets;
+    }
+
+    public String getMainSet() {
+        return mainSet;
+    }
+
+    public void setMainSet(String mainSet) {
+        this.mainSet = mainSet;
     }
 }

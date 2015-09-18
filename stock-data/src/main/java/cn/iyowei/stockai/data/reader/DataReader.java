@@ -1,5 +1,8 @@
 package cn.iyowei.stockai.data.reader;
 
+import cn.iyowei.stockai.data.core.RedisKey;
+import cn.iyowei.stockai.data.core.Stock;
+import cn.iyowei.stockai.data.core.StockBrief;
 import cn.iyowei.stockai.data.core.StockTuple;
 import org.springframework.data.redis.core.BoundZSetOperations;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -16,7 +19,6 @@ import java.util.concurrent.TimeUnit;
 public class DataReader {
 
     private static final String ACTION_INTERSECT = "intersect";
-    private static final String ACTION_UNION = "union";
 
     private RedisTemplate redisTemplate;
 
@@ -41,16 +43,7 @@ public class DataReader {
         return sb.toString();
     }
 
-    public List<StockTuple> listUnion(String set1, Collection<String> targetSets) {
-        String tempSetKey = genTempSetKey(set1, targetSets, ACTION_UNION);
-        getOps(set1).unionAndStore(targetSets, tempSetKey);
-        BoundZSetOperations tempSetOps = getOps(tempSetKey);
-        Set<StockTuple> tempSet = tempSetOps.rangeByScore(0, Double.MAX_VALUE);
-        tempSetOps.expire(5, TimeUnit.SECONDS);
-        return new ArrayList<StockTuple>(tempSet);
-    }
-
-    public List<StockTuple> listIntersect(String set1, Collection<String> targetSets) {
+    public List<StockTuple> intersect(String set1, Collection<String> targetSets) {
         String tempSetKey = genTempSetKey(set1, targetSets, ACTION_INTERSECT);
         getOps(set1).intersectAndStore(targetSets, tempSetKey);
         BoundZSetOperations tempSetOps = getOps(tempSetKey);
@@ -70,6 +63,14 @@ public class DataReader {
 
     public List<StockTuple> list(String setName) {
         return new ArrayList<StockTuple>(getOps(setName).rangeByScoreWithScores(0, Double.MAX_VALUE));
+    }
+
+    public List<Stock> listQuotation(Collection<String> codes) {
+        return redisTemplate.boundHashOps(RedisKey.QUO).multiGet(codes);
+    }
+
+    public List<StockBrief> listStockBrief(Collection<String> codes) {
+        return redisTemplate.boundHashOps(RedisKey.BRIEF).multiGet(codes);
     }
 
     public void setRedisTemplate(RedisTemplate redisTemplate) {

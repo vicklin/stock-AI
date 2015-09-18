@@ -1,13 +1,12 @@
 package cn.iyowei.stockai.data.manager;
 
+import cn.iyowei.stockai.data.core.Stock;
+import cn.iyowei.stockai.data.core.StockBrief;
 import cn.iyowei.stockai.data.core.StockTuple;
 import cn.iyowei.stockai.data.reader.DataReader;
 import cn.iyowei.stockai.data.writer.DataWriter;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Observable;
-import java.util.Set;
+import java.util.*;
 
 /**
  * stock data operator
@@ -24,15 +23,9 @@ public class DataSetManager extends Observable {
         this.writer = dataWriter;
     }
 
-    public List<StockTuple> listUnion(String set1, Collection<String> targetSets) {
-        List<StockTuple> list = reader.listUnion(set1, targetSets);
-        checkThreshold(list, 1); // FIXME 此处应该有对threshold的type以及对应的threshold值进行规范。。
-        return list;
-    }
-
-    public List<StockTuple> listIntersect(String set1, Collection<String> targetSets) {
-        List<StockTuple> list = reader.listIntersect(set1, targetSets);
-        checkThreshold(list, 2); // FIXME 此处应该有对threshold的type以及对应的threshold值进行规范。。
+    public List<StockTuple> intersect(String set1, Collection<String> targetSets) {
+        List<StockTuple> list = reader.intersect(set1, targetSets);
+        checkThreshold(set1, targetSets, list); // FIXME 此处应该有对threshold的type以及对应的threshold值进行规范。。
         return list;
     }
 
@@ -43,10 +36,9 @@ public class DataSetManager extends Observable {
      * 3.超阀值机制重新定制
      *
      * @param list
-     * @param i
      */
-    private void checkThreshold(List<StockTuple> list, int i) {
-        DataThreshold dt = new DataThreshold(i, 100);
+    private void checkThreshold(String set1, Collection<String> targetSets, List<StockTuple> list) {
+        DataThreshold dt = new DataThreshold(set1, targetSets, 100);
         dt.setAmount(list.size());
         if (dt.isUnderThreshold()) {
             setChanged();
@@ -64,6 +56,26 @@ public class DataSetManager extends Observable {
 
     public List<StockTuple> list(String setName) {
         return reader.list(setName);
+    }
+
+    public List<Stock> listQuotation(Collection<String> codes) {
+        return reader.listQuotation(codes);
+    }
+
+    public List<Stock> listStock(Collection<String> codes) {
+        List<Stock> list = reader.listQuotation(codes);
+        List<StockBrief> briefs = reader.listStockBrief(codes);
+        Map<String, StockBrief> map = new HashMap<String, StockBrief>();
+        for (StockBrief s : briefs) {
+            map.put(s.getCode(), s);
+        }
+        for (Stock s : list) {
+        }
+        return list;
+    }
+
+    public List<StockBrief> listStockBrief(Collection<String> codes) {
+        return reader.listStockBrief(codes);
     }
 
     public void save(String setName, Set<StockTuple> targets) {
@@ -86,4 +98,21 @@ public class DataSetManager extends Observable {
         writer.remove(setName, targets);
     }
 
+    /**
+     * 更新股票基本信息
+     *
+     * @param list
+     */
+    public void updateBrief(List<StockBrief> list) {
+        writer.updateBrief(list);
+    }
+
+    /**
+     * 更新行情信息
+     *
+     * @param list
+     */
+    public void updateQuotation(List<Stock> list) {
+        writer.updateQuotation(list);
+    }
 }

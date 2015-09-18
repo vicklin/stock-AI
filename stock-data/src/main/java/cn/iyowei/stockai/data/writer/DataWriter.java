@@ -1,11 +1,13 @@
 package cn.iyowei.stockai.data.writer;
 
+import cn.iyowei.stockai.data.core.RedisKey;
+import cn.iyowei.stockai.data.core.Stock;
+import cn.iyowei.stockai.data.core.StockBrief;
 import cn.iyowei.stockai.data.core.StockTuple;
 import org.springframework.data.redis.core.BoundZSetOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by vick on 15-9-15.
@@ -44,5 +46,25 @@ public class DataWriter {
 
     public void setRedisTemplate(RedisTemplate redisTemplate) {
         this.redisTemplate = redisTemplate;
+    }
+
+    public void updateBrief(List<StockBrief> list) {
+        Map<String, StockBrief> map = new HashMap<String, StockBrief>();
+        for (StockBrief s : list) {
+            if (!map.containsKey(s.getCode())) {
+                map.put(s.getCode(), s);
+            }
+        }
+        redisTemplate.boundHashOps(RedisKey.BRIEF).putAll(map);
+    }
+
+    public void updateQuotation(List<Stock> list) {
+        Map<String, Stock> map = new HashMap<String, Stock>();
+        for (Stock s : list) {
+            if (!map.containsKey(s.getCode())) {
+                map.put(s.getCode(), s);
+            }
+        }
+        redisTemplate.boundHashOps(RedisKey.QUO).putAll(map);
     }
 }

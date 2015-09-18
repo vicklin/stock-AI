@@ -74,29 +74,14 @@ public class StockServiceTest extends BaseSpringTest {
     public void testIntersect() {
         List<String> targets = new ArrayList<String>();
         String setName = QueryType.RankProp.FIVE_PL.value();
-//        String setName2 = QueryType.RankProp.PL.value();
+        String setName2 = QueryType.RankProp.PL.value();
         String setName3 = QueryType.RankProp.SHAKE.value();
-//        targets.add(setName2);
+        targets.add(setName2);
         targets.add(setName3);
         List<StockTuple> list = aiService.intersect(setName, targets);
         System.out.println(JsonUtils.toString(list));
     }
 
-
-    /**
-     * 并集
-     */
-    @Test
-    public void testUnion() {
-        List<String> targets = new ArrayList<String>();
-        String setName = QueryType.RankProp.FIVE_PL.value();
-        String setName2 = QueryType.RankProp.PL.value();
-        String setName3 = QueryType.RankProp.SHAKE.value();
-        targets.add(setName2);
-        targets.add(setName3);
-        List<StockTuple> list = aiService.union(setName, targets);
-        System.out.println(JsonUtils.toString(list));
-    }
 
     @Test
     public void testRemove() {

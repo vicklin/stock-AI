@@ -58,13 +58,8 @@ public class StockAIService {
     }
 
 
-    public List<StockTuple> union(String set1, Collection<String> targets) {
-        return dataSetProxy.listUnion(set1, targets);
-    }
-
-
     public List<StockTuple> intersect(String set1, Collection<String> targets) {
-        return dataSetProxy.listIntersect(set1, targets);
+        return dataSetProxy.intersect(set1, targets);
     }
 
     public void save(String setName, Collection<StockQuotationDto> c) {

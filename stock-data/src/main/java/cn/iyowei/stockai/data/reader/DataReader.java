@@ -1,9 +1,6 @@
 package cn.iyowei.stockai.data.reader;
 
-import cn.iyowei.stockai.data.core.RedisKey;
-import cn.iyowei.stockai.data.core.Stock;
-import cn.iyowei.stockai.data.core.StockBrief;
-import cn.iyowei.stockai.data.core.StockTuple;
+import cn.iyowei.stockai.data.core.*;
 import org.springframework.data.redis.core.BoundZSetOperations;
 import org.springframework.data.redis.core.RedisTemplate;
 
@@ -65,7 +62,7 @@ public class DataReader {
         return new ArrayList<StockTuple>(getOps(setName).rangeByScoreWithScores(0, Double.MAX_VALUE));
     }
 
-    public List<Stock> listQuotation(Collection<String> codes) {
+    public List<StockQuo> listQuotation(Collection<String> codes) {
         return redisTemplate.boundHashOps(RedisKey.QUO).multiGet(codes);
     }
 

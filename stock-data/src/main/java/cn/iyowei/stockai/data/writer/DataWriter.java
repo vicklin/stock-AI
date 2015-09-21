@@ -1,11 +1,13 @@
 package cn.iyowei.stockai.data.writer;
 
 import cn.iyowei.stockai.data.core.RedisKey;
-import cn.iyowei.stockai.data.core.Stock;
 import cn.iyowei.stockai.data.core.StockBrief;
+import cn.iyowei.stockai.data.core.StockQuo;
 import cn.iyowei.stockai.data.core.StockTuple;
+import org.springframework.data.redis.core.BoundHashOperations;
 import org.springframework.data.redis.core.BoundZSetOperations;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.JdkSerializationRedisSerializer;
 
 import java.util.*;
 
@@ -55,16 +57,20 @@ public class DataWriter {
                 map.put(s.getCode(), s);
             }
         }
-        redisTemplate.boundHashOps(RedisKey.BRIEF).putAll(map);
+        redisTemplate.boundHashOps(RedisKey.BRIEF.value()).putAll(map);
     }
 
-    public void updateQuotation(List<Stock> list) {
-        Map<String, Stock> map = new HashMap<String, Stock>();
-        for (Stock s : list) {
+    public void updateQuotation(List<StockQuo> list) {
+        Map<String, StockQuo> map = new HashMap<String, StockQuo>();
+        for (StockQuo s : list) {
             if (!map.containsKey(s.getCode())) {
                 map.put(s.getCode(), s);
+//                redisTemplate.boundHashOps(s.getCode()).putAll(s.toMap());
             }
         }
-        redisTemplate.boundHashOps(RedisKey.QUO).putAll(map);
+//        BoundHashOperations ops = redisTemplate.boundHashOps(RedisKey.QUO.value());
+//        redisTemplate.setHashValueSerializer(new JdkSerializationRedisSerializer());
+//        redisTemplate.afterPropertiesSet();
+//        redisTemplate.boundHashOps(RedisKey.QUO.value()).putAll(map);
     }
 }

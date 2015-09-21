@@ -4,30 +4,32 @@ package cn.iyowei.stockai.data.core;
  * 个股信息详情
  * Created by vick on 15-9-17.
  */
-public class Stock extends StockBrief {
+public class Stock {
 
-    private Double price;
-    private Double lastPrice;
-    private Double topPrice;
-    private Double bottomPrice;
-    private Double openPrice;
+    private StockBrief brief;
+    private StockQuo quo;
 
-    private Double gap; // 涨跌额
-    private Double rate; // 涨跌幅
+    public Stock() {
+    }
 
-    private Integer tradeAmount; // 交易量
+    public Stock(StockBrief brief, StockQuo quo) {
+        this.brief = brief;
+        this.quo = quo;
+    }
 
-    private Double pe; // 市盈率
+    public StockBrief getBrief() {
+        return brief;
+    }
 
-    public Stock(Double price, Double lastPrice, Double topPrice, Double bottomPrice, Double openPrice, Double gap, Double rate, Integer tradeAmount, Double pe) {
-        this.price = price;
-        this.lastPrice = lastPrice;
-        this.topPrice = topPrice;
-        this.bottomPrice = bottomPrice;
-        this.openPrice = openPrice;
-        this.gap = gap;
-        this.rate = rate;
-        this.tradeAmount = tradeAmount;
-        this.pe = pe;
+    public void setBrief(StockBrief brief) {
+        this.brief = brief;
+    }
+
+    public StockQuo getQuo() {
+        return quo;
+    }
+
+    public void setQuo(StockQuo quo) {
+        this.quo = quo;
     }
 }

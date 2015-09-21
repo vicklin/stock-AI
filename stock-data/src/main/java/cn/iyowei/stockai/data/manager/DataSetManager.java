@@ -2,6 +2,7 @@ package cn.iyowei.stockai.data.manager;
 
 import cn.iyowei.stockai.data.core.Stock;
 import cn.iyowei.stockai.data.core.StockBrief;
+import cn.iyowei.stockai.data.core.StockQuo;
 import cn.iyowei.stockai.data.core.StockTuple;
 import cn.iyowei.stockai.data.reader.DataReader;
 import cn.iyowei.stockai.data.writer.DataWriter;
@@ -58,20 +59,23 @@ public class DataSetManager extends Observable {
         return reader.list(setName);
     }
 
-    public List<Stock> listQuotation(Collection<String> codes) {
+    public List<StockQuo> listQuotation(Collection<String> codes) {
         return reader.listQuotation(codes);
     }
 
     public List<Stock> listStock(Collection<String> codes) {
-        List<Stock> list = reader.listQuotation(codes);
+        List<StockQuo> quos = reader.listQuotation(codes);
         List<StockBrief> briefs = reader.listStockBrief(codes);
+        List<Stock> stocks = new ArrayList<Stock>();
         Map<String, StockBrief> map = new HashMap<String, StockBrief>();
         for (StockBrief s : briefs) {
             map.put(s.getCode(), s);
         }
-        for (Stock s : list) {
+        for (StockQuo quo : quos) {
+            StockBrief brief = map.get(quo.getCode());
+            stocks.add(new Stock(brief, quo));
         }
-        return list;
+        return stocks;
     }
 
     public List<StockBrief> listStockBrief(Collection<String> codes) {
@@ -112,7 +116,7 @@ public class DataSetManager extends Observable {
      *
      * @param list
      */
-    public void updateQuotation(List<Stock> list) {
+    public void updateQuotation(List<StockQuo> list) {
         writer.updateQuotation(list);
     }
 }

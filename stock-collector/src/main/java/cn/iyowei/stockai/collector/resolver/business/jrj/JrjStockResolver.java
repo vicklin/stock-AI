@@ -3,7 +3,6 @@ package cn.iyowei.stockai.collector.resolver.business.jrj;
 import cn.iyowei.stockai.collector.resolver.business.jrj.vo.Column;
 import cn.iyowei.stockai.collector.resolver.business.jrj.vo.Hqa;
 import cn.iyowei.stockai.crawler.analyse.resolve.Resolver;
-import cn.iyowei.stockai.data.core.Stock;
 import cn.iyowei.stockai.data.core.StockQuo;
 import cn.iyowei.stockai.data.manager.DataSetProxy;
 import cn.iyowei.stockai.util.json.JsonUtils;
@@ -12,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * 针对金融界网站的返回结果进行处理
  * Created by vick on 15-9-17.
  */
 public class JrjStockResolver implements Resolver {

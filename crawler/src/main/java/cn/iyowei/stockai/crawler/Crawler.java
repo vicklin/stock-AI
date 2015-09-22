@@ -10,8 +10,6 @@ public class Crawler {
 
     private String url;
 
-    private ResultManager manager;
-
     public Crawler() {
     }
 
@@ -19,7 +17,7 @@ public class Crawler {
         this.url = url;
     }
 
-    public void crawl() {
+    public void crawl(ResultManager manager) {
         try {
             String html = new Downloader().get(url);
             manager.manage(html);
@@ -28,10 +26,6 @@ public class Crawler {
         }
     }
 
-    public Crawler setManager(ResultManager manager) {
-        this.manager = manager;
-        return this;
-    }
 
     public Crawler setUrl(String url) {
         this.url = url;

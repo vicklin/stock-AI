@@ -1,0 +1,33 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+
+    <bean id="rankTask" class="cn.iyowei.stockai.collector.task.RankTask">
+    </bean>
+
+    <bean id="rankTaskScheduleJobDetail"
+          class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject" ref="rankTask"/>
+        <property name="targetMethod" value="run"/>
+        <property name="concurrent" value="false"/>
+    </bean>
+
+
+    <bean id="rankTaskScheduleJobDetailTrigger"
+          class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail" ref="rankTaskScheduleJobDetail"/>
+        <property name="cronExpression" value="0 0/1 9-22 ? * *"/>
+    </bean>
+
+
+    <!-- 调度器启动 -->
+    <bean id="schedulerFactory" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+        <property name="triggers">
+            <list>
+                <ref bean="rankTaskScheduleJobDetailTrigger"/>
+            </list>
+        </property>
+    </bean>
+
+</beans>

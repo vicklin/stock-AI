@@ -4,11 +4,14 @@ import cn.iyowei.stockai.collector.resolver.business.jrj.vo.Column;
 import cn.iyowei.stockai.collector.resolver.business.jrj.vo.Hqa;
 import cn.iyowei.stockai.crawler.analyse.resolve.Resolver;
 import cn.iyowei.stockai.data.core.StockQuo;
+import cn.iyowei.stockai.data.core.StockTuple;
 import cn.iyowei.stockai.data.manager.DataSetProxy;
 import cn.iyowei.stockai.util.json.JsonUtils;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * 针对金融界网站的返回结果进行处理
@@ -17,9 +20,11 @@ import java.util.List;
 public class JrjStockResolver implements Resolver {
 
     private DataSetProxy proxy;
+    private String name;
 
-    public JrjStockResolver(DataSetProxy proxy) {
+    public JrjStockResolver(DataSetProxy proxy, String name) {
         this.proxy = proxy;
+        this.name = name;
     }
 
     @Override
@@ -30,13 +35,17 @@ public class JrjStockResolver implements Resolver {
         List<Object> list = hqa.getHqData();
         List<Column> resultList = new ArrayList<Column>();
         List<StockQuo> stockList = new ArrayList<StockQuo>();
+        Set<StockTuple> stockTupleSet = new HashSet<StockTuple>();
+
+        double i = 0;
         for (Object obj : list) {
-            String[] arr = obj.toString().replaceAll("\"", "").replaceAll("\\[", "").replaceAll("]", "").split(",");
+            String[] arr = String.valueOf(obj).replaceAll("\"", "").replaceAll("\\[", "").replaceAll("]", "").split(",");
             Column column = new Column();
             StockQuo q = new StockQuo();
             column.setId(arr[0].trim());
-            column.setCode(arr[1].trim());
 
+            // code
+            column.setCode(arr[1].trim());
             q.setCode(arr[1].trim());
 
             column.setName(arr[2].trim());
@@ -81,8 +90,12 @@ public class JrjStockResolver implements Resolver {
 
             resultList.add(column);
             stockList.add(q);
+
+            stockTupleSet.add(new StockTuple(arr[1].trim(), i++));
         }
 
+        proxy.remove(name);
+        proxy.save(name, stockTupleSet);
         proxy.updateQuotation(stockList);
 
         return resultList;
